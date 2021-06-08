@@ -32,6 +32,9 @@ AM_SILENT_RULES([yes])
 # Checks for header files.
 AC_CHECK_HEADERS([unistd.h])
 
+# Check for ACL
+AX_CHECK_ACL
+
 # Boost is no longer required
 AX_BOOST_BASE([1.59], [], [ AC_MSG_ERROR([Boost library not found])])
 
@@ -61,6 +64,9 @@ echo "Configuration summary:"
 echo "    Compiler version... ${CXX_VERSION}"
 echo ""
 echo "    Installation prefix... ${prefix}"
+echo ""
+echo "    ACL CPPFLAGS... ${aclinc}"
+echo "    ACL LDFLAGS... ${acllibs} ${acllib}"
 echo ""
 echo "    CXXFLAGS... ${tacl_CXXFLAGS} ${CXXFLAGS}"
 echo "    CPPFLAGS... ${tacl_CPPFLAGS} ${CPPFLAGS}"

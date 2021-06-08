@@ -5,6 +5,7 @@
 ACLOCAL_AMFLAGS=-I m4
 
 AM_CPPFLAGS=\
+ $(aclinc) \
  $(BOOST_CPPFLAGS) -DBOOST_ENABLE_ASSERT_DEBUG_HANDLER \
  -I$(top_srcdir)/src \
  -I$(top_srcdir)/src/common \
@@ -14,8 +15,8 @@ AM_CPPFLAGS=\
 
 AM_CXXFLAGS=$(tacl_CXXFLAGS)
 
-AM_LDFLAGS=$(BOOST_LDFLAGS) -ldl
-LIBS=
+AM_LDFLAGS=$(acllib) $(BOOST_LDFLAGS) -ldl
+LIBS=$(acllibs)
 
 include_HEADERS= \
  src/include/TACL.h
