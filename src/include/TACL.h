@@ -21,7 +21,8 @@ extern "C" {
 
 typedef void *taclRequest;
 
-const taclRequest TACL_REQUEST_NULL = NULL;
+static const taclRequest TACL_REQUEST_NULL = NULL;
+static const size_t TACL_STREAMS_AUTO = 0;
 
 aclError
 taclInit(const char *configPath);
