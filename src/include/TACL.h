@@ -80,6 +80,18 @@ taclWaitRequestAsync(taclRequest *request);
 aclError
 taclWaitallRequestsAsync(size_t count, taclRequest requests[]);
 
+aclError
+taclDoubleToFloat16Buffer(aclFloat16 *dst, const double *src, size_t count);
+
+aclError
+taclFloatToFloat16Buffer(aclFloat16 *dst, const float *src, size_t count);
+
+aclError
+taclFloat16ToDoubleBuffer(double *dst, const aclFloat16 *src, size_t count);
+
+aclError
+taclFloat16ToFloatBuffer(float *dst, const aclFloat16 *src, size_t count);
+
 #ifdef __cplusplus
 }
 #endif

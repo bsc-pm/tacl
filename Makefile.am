@@ -24,6 +24,7 @@ pkginclude_HEADERS= # This library does not provide any additional header
 
 c_api_sources= \
  src/c/CBLASOperations.cpp \
+ src/c/Converters.cpp \
  src/c/Initialization.cpp \
  src/c/MemoryOperations.cpp \
  src/c/Operations.cpp \
