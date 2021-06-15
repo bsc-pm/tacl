@@ -30,6 +30,12 @@ aclError
 taclFinalize();
 
 aclError
+taclrtCreateStreams(size_t count);
+
+aclError
+taclrtDestroyStreams();
+
+aclError
 taclrtGetStream(aclrtStream *stream);
 
 aclError

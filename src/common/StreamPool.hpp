@@ -24,6 +24,9 @@ private:
 	//! Array of streams
 	static std::vector<aclrtStream> _streams;
 
+	//! Context of the streams
+	static aclrtContext _context;
+
 public:
 	//! \brief Initialize the pool of streams
 	//!
@@ -32,9 +35,13 @@ public:
 	{
 		assert(nstreams > 0);
 
+		aclError eret = aclrtGetCurrentContext(&_context);
+		if (eret != ACL_ERROR_NONE)
+			ErrorHandler::fail("Failed in aclrtGetContext: ", eret);
+
 		_streams.resize(nstreams);
 		for (size_t s = 0; s < nstreams; ++s) {
-			aclError eret = aclrtCreateStream(&_streams[s]);
+			eret = aclrtCreateStream(&_streams[s]);
 			if (eret != ACL_ERROR_NONE)
 				ErrorHandler::fail("Failed in aclrtCreateStream: ", eret);
 		}
@@ -56,6 +63,10 @@ public:
 	static inline aclrtStream getStream(size_t streamId)
 	{
 		assert(streamId < _streams.size());
+
+		aclError eret = aclrtSetCurrentContext(_context);
+		if (eret != ACL_ERROR_NONE)
+			ErrorHandler::fail("Failed in aclrtSetContext: ", eret);
 
 		return _streams[streamId];
 	}

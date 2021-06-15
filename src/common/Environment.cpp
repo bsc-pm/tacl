@@ -24,6 +24,7 @@ SpinLock RequestManager::_addQueueLock;
 RequestManager::list_t RequestManager::_pendingRequests;
 
 std::vector<aclrtStream> StreamPool::_streams;
+aclrtContext StreamPool::_context;
 
 } // namespace tacl
 

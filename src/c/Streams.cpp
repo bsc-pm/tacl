@@ -19,6 +19,26 @@ using namespace tacl;
 extern "C" {
 
 aclError
+taclrtCreateStreams(size_t count)
+{
+	if (count == TACL_STREAMS_AUTO)
+		count = TaskingModel::getNumCPUs();
+	assert(count > 0);
+
+	StreamPool::initialize(count);
+
+	return ACL_ERROR_NONE;
+}
+
+aclError
+taclrtDestroyStreams()
+{
+	StreamPool::finalize();
+
+	return ACL_ERROR_NONE;
+}
+
+aclError
 taclrtGetStream(aclrtStream *stream)
 {
 	assert(stream != nullptr);

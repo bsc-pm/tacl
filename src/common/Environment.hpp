@@ -45,8 +45,6 @@ public:
 
 		Allocator<Request>::initialize();
 
-		StreamPool::initialize(TaskingModel::getNumCPUs());
-
 		assert(!_pollingHandle);
 		_pollingHandle = TaskingModel::registerPolling("TACL", Environment::polling, nullptr, _pollingFrequency);
 	}
@@ -59,8 +57,6 @@ public:
 	static void finalize()
 	{
 		TaskingModel::unregisterPolling(_pollingHandle);
-
-		StreamPool::finalize();
 
 		Allocator<Request>::finalize();
 	}
